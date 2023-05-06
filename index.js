@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3030;
 
+let visits = 0;
 app.get("*", (req, res) => {
-  res.json({ params: req.params, query: req.query });
+  visits++;
+  res.json({ visits, params: req.params, query: req.query });
 });
 
 app.listen(PORT, () => {
